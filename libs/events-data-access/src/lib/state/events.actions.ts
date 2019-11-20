@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
-import { Entity } from './events.reducer';
+import {IEvent} from '@angular-events/interfaces';
+
 
 export enum EventsActionTypes {
   LoadEvents = '[Events] Load Events',
@@ -18,7 +19,7 @@ export class EventsLoadError implements Action {
 
 export class EventsLoaded implements Action {
   readonly type = EventsActionTypes.EventsLoaded;
-  constructor(public payload: Entity[]) {}
+  constructor(public payload: IEvent[]) {}
 }
 
 export type EventsAction = LoadEvents | EventsLoaded | EventsLoadError;
