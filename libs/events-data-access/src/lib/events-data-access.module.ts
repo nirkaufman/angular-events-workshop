@@ -6,6 +6,7 @@ import * as fromEvents from './state/events.reducer';
 import { EventsEffects } from './state/events.effects';
 import { EventsApiService } from './events-api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DataPersistence } from '@nrwl/angular';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { HttpClientModule } from '@angular/common/http';
     StoreModule.forFeature(fromEvents.EVENTS_FEATURE_KEY, fromEvents.reducer),
     EffectsModule.forFeature([EventsEffects])
   ],
-  providers: [EventsApiService]
+  providers: [EventsApiService, DataPersistence]
 })
 export class EventsDataAccessModule {}
