@@ -1,4 +1,6 @@
 import { EventsAction, EventsActionTypes } from './events.actions';
+import {IEvent} from '@angular-events/interfaces';
+
 
 export const EVENTS_FEATURE_KEY = 'events';
 
@@ -13,7 +15,7 @@ export const EVENTS_FEATURE_KEY = 'events';
 export interface Entity {}
 
 export interface EventsState {
-  list: Entity[]; // list of Events; analogous to a sql normalized table
+  list: IEvent[]; // list of Events; analogous to a sql normalized table
   selectedId?: string | number; // which Events record has been selected
   loaded: boolean; // has the Events list been loaded
   error?: any; // last none error (if any)

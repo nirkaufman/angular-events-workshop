@@ -1,21 +1,27 @@
-import { IEvent } from './event.entity';
+import { EventEntity } from './event.entity';
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { IEvent } from '@angular-events/interfaces';
 
 @Injectable()
 export class EventService {
-  private events: IEvent[] = [{
-    id: 1,
-    title: 'Event title',
-    description: 'Event description',
-    published: true
-  }];
+  private eventRepository: Repository<EventEntity>;
 
-  getAllEvents() {
-    return this.events;
+  constructor(@InjectRepository(EventEntity) eventRepository: Repository<EventEntity>){
+    this.eventRepository = eventRepository;
   }
 
-  createNewEvent(eventData: IEvent) {
-    this.events.push(eventData);
+  getAllEvents(): Promise<IEvent[]> {
+    return this.eventRepository.find();
   }
 
+  getById(eventId: number): Promise<IEvent> {
+    return this.eventRepository.findOne({where: {id: eventId}})
+  }
+
+  createNewEvent(eventData: IEvent): Promise<IEvent> {
+    const event = this.eventRepository.create(eventData);
+    return this.eventRepository.save(event);
+  }
 }
