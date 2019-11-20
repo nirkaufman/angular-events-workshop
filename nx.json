@@ -19,6 +19,12 @@
     },
     "events-data-access": {
       "tags": []
+    },
+    "events-feature-list": {
+      "tags": []
+    },
+    "shared-ui": {
+      "tags": []
     }
   }
 }

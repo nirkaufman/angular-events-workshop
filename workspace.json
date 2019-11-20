@@ -202,6 +202,60 @@
         }
       },
       "schematics": {}
+    },
+    "events-feature-list": {
+      "projectType": "library",
+      "root": "libs/events/feature-list",
+      "sourceRoot": "libs/events/feature-list/src",
+      "prefix": "angular-events",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/events/feature-list/tsconfig.lib.json",
+              "libs/events/feature-list/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/events/feature-list/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/events/feature-list/jest.config.js",
+            "tsConfig": "libs/events/feature-list/tsconfig.spec.json",
+            "setupFile": "libs/events/feature-list/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "shared-ui": {
+      "projectType": "library",
+      "root": "libs/shared-ui",
+      "sourceRoot": "libs/shared-ui/src",
+      "prefix": "angular-events",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared-ui/tsconfig.lib.json",
+              "libs/shared-ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared-ui/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared-ui/jest.config.js",
+            "tsConfig": "libs/shared-ui/tsconfig.spec.json",
+            "setupFile": "libs/shared-ui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

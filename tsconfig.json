@@ -18,7 +18,11 @@
     "paths": {
       "@angular-events/events-data-access": [
         "libs/events-data-access/src/index.ts"
-      ]
+      ],
+      "@angular-events/events/feature-list": [
+        "libs/events/feature-list/src/index.ts"
+      ],
+      "@angular-events/shared-ui": ["libs/shared-ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

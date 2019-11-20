@@ -15,7 +15,18 @@ import { EventsDataAccessModule } from '@angular-events/events-data-access';
   imports: [
     EventsDataAccessModule,
     BrowserModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+    RouterModule.forRoot(
+      [
+        {
+          path: 'events-feature-list',
+          loadChildren: () =>
+            import('@angular-events/events/feature-list').then(
+              module => module.EventsFeatureListModule
+            )
+        }
+      ],
+      { initialNavigation: 'enabled' }
+    ),
     StoreModule.forRoot(
       {},
       {
