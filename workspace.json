@@ -175,6 +175,33 @@
           }
         }
       }
+    },
+    "events-data-access": {
+      "projectType": "library",
+      "root": "libs/events-data-access",
+      "sourceRoot": "libs/events-data-access/src",
+      "prefix": "angular-events",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/events-data-access/tsconfig.lib.json",
+              "libs/events-data-access/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/events-data-access/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/events-data-access/jest.config.js",
+            "tsConfig": "libs/events-data-access/tsconfig.spec.json",
+            "setupFile": "libs/events-data-access/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

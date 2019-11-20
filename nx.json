@@ -16,6 +16,9 @@
     },
     "events-client": {
       "tags": []
+    },
+    "events-data-access": {
+      "tags": []
     }
   }
 }
