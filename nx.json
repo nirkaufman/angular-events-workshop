@@ -10,6 +10,12 @@
   "projects": {
     "events-server-api": {
       "tags": []
+    },
+    "events-client-e2e": {
+      "tags": []
+    },
+    "events-client": {
+      "tags": []
     }
   }
 }

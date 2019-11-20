@@ -14,9 +14,7 @@
             "outputPath": "dist/apps/events-server/api",
             "main": "apps/events-server/api/src/main.ts",
             "tsConfig": "apps/events-server/api/tsconfig.app.json",
-            "assets": [
-              "apps/events-server/api/src/assets"
-            ]
+            "assets": ["apps/events-server/api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -47,10 +45,7 @@
               "apps/events-server/api/tsconfig.app.json",
               "apps/events-server/api/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/events-server/api/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/events-server/api/**"]
           }
         },
         "test": {
@@ -58,6 +53,125 @@
           "options": {
             "jestConfig": "apps/events-server/api/jest.config.js",
             "tsConfig": "apps/events-server/api/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "events-client": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/events-client",
+      "sourceRoot": "apps/events-client/src",
+      "prefix": "angular-events",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/events-client",
+            "index": "apps/events-client/src/index.html",
+            "main": "apps/events-client/src/main.ts",
+            "polyfills": "apps/events-client/src/polyfills.ts",
+            "tsConfig": "apps/events-client/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/events-client/src/favicon.ico",
+              "apps/events-client/src/assets"
+            ],
+            "styles": ["apps/events-client/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/events-client/src/environments/environment.ts",
+                  "with": "apps/events-client/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "events-client:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "events-client:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "events-client:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/events-client/tsconfig.app.json",
+              "apps/events-client/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/events-client/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/events-client/jest.config.js",
+            "tsConfig": "apps/events-client/tsconfig.spec.json",
+            "setupFile": "apps/events-client/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "events-client-e2e": {
+      "root": "apps/events-client-e2e",
+      "sourceRoot": "apps/events-client-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/events-client-e2e/cypress.json",
+            "tsConfig": "apps/events-client-e2e/tsconfig.e2e.json",
+            "devServerTarget": "events-client:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "events-client:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/events-client-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/events-client-e2e/**"]
           }
         }
       }
@@ -109,6 +223,13 @@
       "application": {
         "linter": "eslint"
       }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
     }
   },
   "defaultProject": "events-server-api"
