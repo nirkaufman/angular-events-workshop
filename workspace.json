@@ -1,8 +1,70 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "events-server-api": {
+      "root": "apps/events-server/api",
+      "sourceRoot": "apps/events-server/api/src",
+      "projectType": "application",
+      "prefix": "events-server-api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/events-server/api",
+            "main": "apps/events-server/api/src/main.ts",
+            "tsConfig": "apps/events-server/api/tsconfig.app.json",
+            "assets": [
+              "apps/events-server/api/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/events-server/api/src/environments/environment.ts",
+                  "with": "apps/events-server/api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "events-server-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/events-server/api/.eslintrc",
+            "tsConfig": [
+              "apps/events-server/api/tsconfig.app.json",
+              "apps/events-server/api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/events-server/api/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/events-server/api/jest.config.js",
+            "tsConfig": "apps/events-server/api/tsconfig.spec.json"
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/nest"
   },
   "schematics": {
     "@nrwl/workspace": {
@@ -48,5 +110,6 @@
         "linter": "eslint"
       }
     }
-  }
+  },
+  "defaultProject": "events-server-api"
 }
