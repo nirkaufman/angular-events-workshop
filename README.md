@@ -2,6 +2,32 @@
 
 This project was generated using [Nx](https://nx.dev).
 
+DO THIS!
+
+
+- SERVER:
+ First option:
+ -  Implement get event by id  ( @Get(':id') )
+
+ Second option (db):
+ - Add user entity on all layers (new module)
+
+ -LIBRARIES:
+ - create a library for interfaces
+ - move the IEvent interface there
+ - use the IEvent interface on both client and serve
+
+ - CLIENT SIDE (1)
+ - generate another angular app
+   nx g @nrwl/angular:app events-admin --routing
+- generate a feature library 'edit events'
+- use the shared list component from shared UI in 'edit events feature'
+
+
+
+
+
+
 <p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>
 
 🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
