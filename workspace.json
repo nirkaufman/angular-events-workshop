@@ -283,6 +283,36 @@
           }
         }
       }
+    },
+    "events-feature-single-event": {
+      "projectType": "library",
+      "root": "libs/events/feature-single-event",
+      "sourceRoot": "libs/events/feature-single-event/src",
+      "prefix": "angular-events",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/events/feature-single-event/tsconfig.lib.json",
+              "libs/events/feature-single-event/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/events/feature-single-event/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/events/feature-single-event/jest.config.js",
+            "tsConfig": "libs/events/feature-single-event/tsconfig.spec.json",
+            "setupFile": "libs/events/feature-single-event/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

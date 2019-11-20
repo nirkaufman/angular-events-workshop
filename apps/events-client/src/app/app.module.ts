@@ -23,6 +23,13 @@ import { EventsDataAccessModule } from '@angular-events/events-data-access';
             import('@angular-events/events/feature-list').then(
               module => module.EventsFeatureListModule
             )
+        },
+        {
+          path: 'events-feature-single-event',
+          loadChildren: () =>
+            import('@angular-events/events/feature-single-event').then(
+              module => module.EventsFeatureSingleEventModule
+            )
         }
       ],
       { initialNavigation: 'enabled' }

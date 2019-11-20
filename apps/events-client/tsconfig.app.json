@@ -5,6 +5,10 @@
     "types": []
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
-  "include": ["**/*.ts", "../../libs/events/feature-list/src/index.ts"],
+  "include": [
+    "**/*.ts",
+    "../../libs/events/feature-list/src/index.ts",
+    "../../libs/events/feature-single-event/src/index.ts"
+  ],
   "exclude": ["src/test-setup.ts", "**/*.spec.ts"]
 }

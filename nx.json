@@ -28,6 +28,9 @@
     },
     "interfaces": {
       "tags": []
+    },
+    "events-feature-single-event": {
+      "tags": []
     }
   }
 }

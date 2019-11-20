@@ -9,4 +9,5 @@ import { Observable } from 'rxjs';
 })
 export class ListComponent {
   @Input() list:Observable<IListItem[]>;
+  @Input() listName:string;
 }

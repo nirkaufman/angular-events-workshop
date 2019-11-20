@@ -23,7 +23,10 @@
         "libs/events/feature-list/src/index.ts"
       ],
       "@angular-events/shared-ui": ["libs/shared-ui/src/index.ts"],
-      "@angular-events/interfaces": ["libs/interfaces/src/index.ts"]
+      "@angular-events/interfaces": ["libs/interfaces/src/index.ts"],
+      "@angular-events/events/feature-single-event": [
+        "libs/events/feature-single-event/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
