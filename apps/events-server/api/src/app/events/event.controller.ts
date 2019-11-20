@@ -1,5 +1,8 @@
 import { EventService } from './event.service';
+import { Controller, Get } from '@nestjs/common';
+import { IEvent } from './event.entity';
 
+@Controller('events')
 export class EventController {
   private eventService: EventService;
 
@@ -7,8 +10,9 @@ export class EventController {
     this.eventService = eventService;
   }
 
-  all() {
-    this.eventService.getAllEvents();
+  @Get()
+  all(): IEvent[] {
+    return this.eventService.getAllEvents();
   }
 
 }

@@ -1,16 +1,16 @@
 import {IEvent } from './event.entity';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class EventService {
-  private eventRepository: any;
-
-  constructor(eventRepository: any){
-    this.eventRepository = eventRepository;
-  }
+  // private eventRepository: any;
+  //
+  // constructor(eventRepository: any){
+  //   this.eventRepository = eventRepository;
+  // }
 
   getAllEvents(): IEvent[]{
-    const events = this.eventRepository.all();
-    //  do something events
-    return events;
+    return [ { id: 3, title: 'test event', description: 'des', published:true } ];
   }
 
 }
