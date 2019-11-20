@@ -1,5 +1,5 @@
 import { EventService } from './event.service';
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { IEvent } from './event.entity';
 
 @Controller('events')
@@ -13,6 +13,11 @@ export class EventController {
   @Get()
   all(): IEvent[] {
     return this.eventService.getAllEvents();
+  }
+
+  @Post()
+  createEvent(@Body() eventData: IEvent) {
+    this.eventService.createNewEvent(eventData);
   }
 
 }

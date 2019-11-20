@@ -1,0 +1,13 @@
+GET http://localhost:3333/api/events
+Accept: application/json
+
+###
+
+POST http://localhost:3333/api/events
+Content-Type: application/json
+
+{
+  "title" : "another event"
+}
+
+###
