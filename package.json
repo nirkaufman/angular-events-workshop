@@ -27,7 +27,7 @@
   "private": true,
   "dependencies": {
     "@nestjs/common": "^6.8.3",
-    "@nestjs/core": "^6.8.3",
+    "@nestjs/core": "^9.0.5",
     "@nestjs/platform-express": "^6.8.3",
     "@nestjs/typeorm": "^6.2.0",
     "@nrwl/angular": "^8.7.1",
